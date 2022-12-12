@@ -31,6 +31,14 @@
             @keydown.enter="$table?.handleSearch"
           />
         </QueryBarItem>
+        <QueryBarItem label="用户名" :label-width="50">
+          <n-input
+            v-model:value="queryItems.userName"
+            type="text"
+            placeholder="请输入用户名"
+            @keydown.enter="$table?.handleSearch"
+          />
+        </QueryBarItem>
       </template>
     </CrudTable>
 
@@ -70,7 +78,7 @@
             trigger: ['input', 'blur'],
           }"
         >
-          <n-input v-model:value="modalForm.pwd" placeholder="请输入" />
+          <n-input v-model:value="modalForm.pwd" type="password" show-password-on="click" placeholder="请输入" />
         </n-form-item>
       </n-form>
     </CrudModal>

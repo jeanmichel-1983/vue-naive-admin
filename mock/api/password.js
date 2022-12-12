@@ -34,10 +34,15 @@ export default [
     url: '/api/passwords',
     method: 'get',
     response: (data = {}) => {
-      const { title, pageNo, pageSize } = data.query
+      const { title, userName, pageNo, pageSize } = data.query
       let pageData = []
       let total = 60
-      const filterData = passwords.filter((item) => item.title.includes(title) || (!title && title !== 0))
+      const filterData = passwords.filter(
+        (item) =>
+          (item.title.includes(title) || (!title && title !== 0)) &&
+          (item.userName.includes(userName) || (!userName && userName !== 0))
+      )
+
       if (filterData.length) {
         if (pageSize) {
           while (pageData.length < pageSize) {
